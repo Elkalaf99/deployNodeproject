@@ -11,9 +11,10 @@ process.env.NODE_ENV = process.env.NODE_ENV || "development";
 const server = express();
 server.use(express.json());
 // mongodb://mongo:AeAZAPzoUBbxMjBWSQFEiDSxWrhVkCtG@mongodb.railway.internal:27017/myAppDB
+// ${{ MongoDB.MONGO_URL }}
 mongoose
   .connect(
-    "mongodb://mongo:AeAZAPzoUBbxMjBWSQFEiDSxWrhVkCtG@mongodb.railway.internal:27017/myAppDB"
+    "mongodb://mongo:AeAZAPzoUBbxMjBWSQFEiDSxWrhVkCtG@mongodb.railway.internal:27017?retryWrites=true&w=majority"
   )
   .then(() => {
     console.log("Database connected successfully");
